@@ -1,0 +1,45 @@
+﻿/* style.css - minimal valid stylesheet
+   I backed up the original file to style.css.bak
+   This file includes a visible test rule so you can confirm the CSS file is being loaded.
+*/
+
+html {
+  /* visible outline to confirm stylesheet loads */
+  outline: 6px solid rgba(30, 144, 255, 0.45);
+}
+
+/* Gentle global defaults */
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #111827;
+}
+
+/* Small polish for buttons */
+button {
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(17,24,39,0.08);
+}
+
+/* Example override to demonstrate rules take effect */
+h2 {
+  text-decoration: underline dotted rgba(99,102,241,0.5);
+}
+
+/* End of test stylesheet */
+
+/* Diagnostic badge: visible only if this CSS file is actually loaded in the browser. */
+html::before {
+  content: '';
+}
+
+/* Custom small tweaks for the replica page */
+h1, h2 {
+  font-family: 'Pacifico', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* remove default body margin when using Tailwind utility container */
+body { margin: 0; }
+
