@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <form class="glass-box" id="signupForm">
+            <h2>Sign Up</h2>
+<!--Username-->
+            <div class="input-group">
+                <i class="fa-solid fa-circle-user input-icon"></i>
+                <input type="text" id="signupUsername" required>
+                <label> Username</label>
+            </div>
+<!--Password-->
+            <div class="input-group">
+                <i class="fa-solid fa-key input-icon"></i>
+                <input type="password" id="signupPassword" required>
+                <label>Password</label>
+                <i class="fa-solid fa-eye-slash toggle-password" data-target="signup-Password"></i>
+            </div>
+<!--Create Account-->
+            <button type="submit">Create Account</button>
+<!--Already Have an account?-->
+            <div class="links">
+                <a href="login.html">Already have an account?</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="function.js"></script>
+</body>
+</html>

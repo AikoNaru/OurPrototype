@@ -1,0 +1,684 @@
+HTML
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QuestLearn - Level Up Your Learning Journey</title>
+    <meta name="description" content="Complete daily and weekly quests to earn points. Redeem them for extra grade points and unlock achievements. Turn your studies into an epic adventure!">
+
+    <!-- Tailwind CDN for quick local prototype -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Google Font (used for accents if desired) -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="antialiased">
+    <main>
+      <section class="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="relative bg-cover bg-center bg-no-repeat min-h-[500px] flex items-center" style="background-image: url('images/education.jpg')">
+          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="relative z-10 w-full max-w-6xl mx-auto px-4">
+            <div class="max-w-2xl">
+              <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Level Up Your Learning Journey</h1>
+              <p class="text-xl text-white/90 mb-8 leading-relaxed">Complete daily and weekly quests to earn points. Redeem them for extra grade points and unlock achievements. Turn your studies into an epic adventure!</p>
+              <div class="flex flex-wrap gap-4">
+                <button id="hero-start-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors shadow-lg cursor-pointer whitespace-nowrap">
+                  <i class="ri-play-circle-line mr-2"></i>Start Your Quest
+                </button>
+                <button id="hero-progress-btn" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-8 py-4 rounded-lg font-semibold transition-colors border border-white/30 cursor-pointer whitespace-nowrap">
+                  <i class="ri-bar-chart-line mr-2"></i>View Progress
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+          <div class="max-w-6xl mx-auto px-4 py-4 flex justify-center">
+            <div class="bg-white rounded-full p-1 shadow-lg inline-flex">
+              <button id="nav-questboard-btn" class="px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap cursor-pointer bg-blue-600 text-white shadow-md"><i class="ri-treasure-map-line mr-2"></i>Quest Board</button>
+              <button id="nav-rewards-btn" class="px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap cursor-pointer text-gray-600 hover:text-blue-600"><i class="ri-gift-line mr-2"></i>Rewards Store</button>
+              <button id="nav-mypoints-btn" class="px-6 py-3 rounded-full font-medium transition-all whitespace-nowrap cursor-pointer text-gray-600 hover:text-blue-600"><i class="ri-coin-line mr-2"></i>My Points <span id="points-badge" class="ml-2 bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-sm"></span></button>
+            </div>
+          </div>
+        </div>
+
+        <div id="quests" class="max-w-6xl mx-auto px-4 py-8" data-section="quests">
+          <div class="space-y-6">
+            <div class="text-center">
+              <h2 class="text-3xl font-bold text-gray-800 mb-2">Quest Board</h2>
+              <p class="text-gray-600">Choose your adventure and start earning points!</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2">
+              <button data-filter="all" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-blue-600 text-white">All</button>
+              <button data-filter="mathematics" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-white text-gray-600 hover:bg-blue-50 border border-gray-200">Mathematics</button>
+              <button data-filter="literature" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-white text-gray-600 hover:bg-blue-50 border border-gray-200">Literature</button>
+              <button data-filter="science" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-white text-gray-600 hover:bg-blue-50 border border-gray-200">Science</button>
+              <button data-filter="history" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-white text-gray-600 hover:bg-blue-50 border border-gray-200">History</button>
+              <button data-filter="languages" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-white text-gray-600 hover:bg-blue-50 border border-gray-200">Languages</button>
+              <button data-filter="technology" class="filter-btn px-4 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap bg-white text-gray-600 hover:bg-blue-50 border border-gray-200">Technology</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Card: Math Marathon -->
+              <article data-category="mathematics" data-progress="7" data-total="10" data-reward="50" class="quest-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-blue-500">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                      <i class="ri-sun-line"></i>
+                    </div>
+                    <div><span class="px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">MEDIUM</span></div>
+                  </div>
+                  <div class="text-right"><div class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span class="coin-value">50</span></div></div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Math Marathon</h3>
+                <p class="text-gray-600 mb-4">Solve 10 algebra problems correctly</p>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-sm text-gray-500">
+                    <span class="flex items-center"><i class="ri-price-tag-3-line mr-1"></i>Mathematics</span>
+                    <span class="flex items-center"><i class="ri-time-line mr-1"></i>8h 30m</span>
+                  </div>
+                  <div class="space-y-1">
+                    <div class="flex justify-between text-sm text-gray-600"><span>Progress</span><span class="progress-text">7/10</span></div>
+                    <div class="w-full bg-gray-200 rounded-full h-2"><div class="progress-bar bg-blue-600 h-2 rounded-full transition-all" style="width:70%"></div></div>
+                  </div>
+                  <button class="start-quest-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"><i class="ri-play-line mr-2"></i>Start Quest</button>
+                </div>
+              </article>
+
+              <!-- Card: Reading Explorer -->
+              <article data-category="literature" data-progress="1" data-total="3" data-reward="75" class="quest-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-blue-500">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600"><i class="ri-sun-line"></i></div>
+                    <div><span class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">EASY</span></div>
+                  </div>
+                  <div class="text-right"><div class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span class="coin-value">75</span></div></div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Reading Explorer</h3>
+                <p class="text-gray-600 mb-4">Read 3 chapters from your literature book</p>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-sm text-gray-500"><span class="flex items-center"><i class="ri-price-tag-3-line mr-1"></i>Literature</span><span class="flex items-center"><i class="ri-time-line mr-1"></i>12h 15m</span></div>
+                  <div class="space-y-1"><div class="flex justify-between text-sm text-gray-600"><span>Progress</span><span class="progress-text">1/3</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="progress-bar bg-blue-600 h-2 rounded-full transition-all" style="width:33.3333%"></div></div></div>
+                  <button class="start-quest-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"><i class="ri-play-line mr-2"></i>Start Quest</button>
+                </div>
+              </article>
+
+              <!-- Additional cards follow the same structure -->
+              <article data-category="science" data-reward="200" class="quest-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-purple-500">
+                <div class="flex items-start justify-between mb-4">
+                  <div class="flex items-center space-x-2"><div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600"><i class="ri-calendar-line"></i></div><div><span class="px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">HARD</span></div></div>
+                  <div class="text-right"><div class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span class="coin-value">200</span></div></div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Science Lab Master</h3>
+                <p class="text-gray-600 mb-4">Complete chemistry experiment report</p>
+                <div class="space-y-3"><div class="flex items-center justify-between text-sm text-gray-500"><span class="flex items-center"><i class="ri-price-tag-3-line mr-1"></i>Science</span><span class="flex items-center"><i class="ri-time-line mr-1"></i>3d 5h</span></div><button class="start-quest-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"><i class="ri-play-line mr-2"></i>Start Quest</button></div>
+              </article>
+
+              <article data-category="history" data-reward="150" class="quest-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-purple-500">
+                <div class="flex items-start justify-between mb-4"><div class="flex items-center space-x-2"><div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600"><i class="ri-calendar-line"></i></div><div><span class="px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">MEDIUM</span></div></div><div class="text-right"><div class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span class="coin-value">150</span></div></div></div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">History Detective</h3>
+                <p class="text-gray-600 mb-4">Research and write about Ancient Rome</p>
+                <div class="space-y-3"><div class="flex items-center justify-between text-sm text-gray-500"><span class="flex items-center"><i class="ri-price-tag-3-line mr-1"></i>History</span><span class="flex items-center"><i class="ri-time-line mr-1"></i>5d 2h</span></div><button class="start-quest-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"><i class="ri-play-line mr-2"></i>Start Quest</button></div>
+              </article>
+
+              <article data-category="languages" data-reward="40" class="quest-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-green-500 bg-green-50/50">
+                <div class="flex items-start justify-between mb-4"><div class="flex items-center space-x-2"><div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600"><i class="ri-sun-line"></i></div><div><span class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">EASY</span></div></div><div class="text-right"><div class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span class="coin-value">40</span></div></div></div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Language Warrior</h3>
+                <p class="text-gray-600 mb-4">Practice Spanish vocabulary for 30 minutes</p>
+                <div class="space-y-3"><div class="flex items-center justify-between text-sm text-gray-500"><span class="flex items-center"><i class="ri-price-tag-3-line mr-1"></i>Languages</span><span class="flex items-center"><i class="ri-time-line mr-1"></i>6h 45m</span></div><button disabled class="w-full py-3 rounded-lg font-medium transition-colors whitespace-nowrap bg-green-100 text-green-800 cursor-not-allowed"><i class="ri-check-line mr-2"></i>Completed</button></div>
+              </article>
+
+              <article data-category="technology" data-progress="2" data-total="5" data-reward="250" class="quest-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-purple-500">
+                <div class="flex items-start justify-between mb-4"><div class="flex items-center space-x-2"><div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600"><i class="ri-calendar-line"></i></div><div><span class="px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">HARD</span></div></div><div class="text-right"><div class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span class="coin-value">250</span></div></div></div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Code Ninja</h3>
+                <p class="text-gray-600 mb-4">Complete 5 programming challenges</p>
+                <div class="space-y-3"><div class="flex items-center justify-between text-sm text-gray-500"><span class="flex items-center"><i class="ri-price-tag-3-line mr-1"></i>Technology</span><span class="flex items-center"><i class="ri-time-line mr-1"></i>2d 8h</span></div><div class="space-y-1"><div class="flex justify-between text-sm text-gray-600"><span>Progress</span><span class="progress-text">2/5</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="progress-bar bg-blue-600 h-2 rounded-full transition-all" style="width:40%"></div></div></div><button class="start-quest-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white"><i class="ri-play-line mr-2"></i>Start Quest</button></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rewards Store Section -->
+    <section id="rewards-section" class="hidden min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-800 mb-2">🎁 Rewards Store</h2>
+          <p class="text-gray-600 text-lg">Redeem your hard-earned points for amazing rewards!</p>
+        </div>
+
+        <!-- Current Points Display -->
+        <div class="max-w-md mx-auto mb-12 bg-white rounded-xl shadow-lg p-8 border-l-4 border-yellow-400">
+          <div class="text-center">
+            <p class="text-gray-600 text-sm uppercase tracking-widest mb-2">Your Balance</p>
+            <div class="text-5xl font-bold text-yellow-600 mb-2">
+              <i class="ri-coin-line"></i><span id="reward-points-balance">0</span>
+            </div>
+            <p class="text-gray-500 text-sm">Keep completing quests to earn more points!</p>
+            </div>
+        </div>
+
+        <!-- Rewards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Reward Card 1: Grade Boost (2 Points) -->
+          <div class="reward-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-blue-400 hover:border-blue-600" data-reward-id="1" data-reward-cost="500" data-reward-title="+2 Grade Points">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-blue-100">
+                <i class="ri-trophy-line text-3xl text-blue-600"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl font-bold text-yellow-600 flex items-center gap-1">
+                  <i class="ri-coin-line"></i>500
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Grade Boost</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">+2 Grade Points</h3>
+            <p class="text-gray-600 mb-4">Add 2 extra points to your next exam</p>
+            <button class="redeem-reward-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer bg-blue-600 hover:bg-blue-700 text-white">
+              <i class="ri-shopping-cart-line mr-2"></i>Redeem Now
+            </button>
+          </div>
+
+          <!-- Reward Card 2: Major Grade Boost (5 Points) -->
+          <div class="reward-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-purple-400 hover:border-purple-600" data-reward-id="2" data-reward-cost="1000" data-reward-title="+5 Grade Points">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-purple-100">
+                <i class="ri-medal-line text-3xl text-purple-600"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl font-bold text-yellow-600 flex items-center gap-1">
+                  <i class="ri-coin-line"></i>1000
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Grade Boost</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">+5 Grade Points</h3>
+            <p class="text-gray-600 mb-4">Add 5 extra points to your next assignment</p>
+            <button class="redeem-reward-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer bg-blue-600 hover:bg-blue-700 text-white">
+              <i class="ri-shopping-cart-line mr-2"></i>Redeem Now
+            </button>
+          </div>
+
+          <!-- Reward Card 3: Extra Credit Project -->
+          <div class="reward-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-indigo-400 hover:border-indigo-600" data-reward-id="3" data-reward-cost="800" data-reward-title="Extra Credit Project">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-indigo-100">
+                <i class="ri-book-open-line text-3xl text-indigo-600"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl font-bold text-yellow-600 flex items-center gap-1">
+                  <i class="ri-coin-line"></i>800
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Academic</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Extra Credit Project</h3>
+            <p class="text-gray-600 mb-4">Unlock an extra credit opportunity</p>
+            <button class="redeem-reward-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer bg-blue-600 hover:bg-blue-700 text-white">
+              <i class="ri-shopping-cart-line mr-2"></i>Redeem Now
+            </button>
+          </div>
+
+          <!-- Reward Card 4: Late Submission Pass -->
+          <div class="reward-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-green-400 hover:border-green-600" data-reward-id="4" data-reward-cost="600" data-reward-title="Late Submission Pass">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-green-100">
+                <i class="ri-time-line text-3xl text-green-600"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl font-bold text-yellow-600 flex items-center gap-1">
+                  <i class="ri-coin-line"></i>600
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Academic</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Late Submission Pass</h3>
+            <p class="text-gray-600 mb-4">Submit one assignment up to 2 days late without penalty</p>
+            <button class="redeem-reward-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer bg-blue-600 hover:bg-blue-700 text-white">
+              <i class="ri-shopping-cart-line mr-2"></i>Redeem Now
+            </button>
+          </div>
+
+          <!-- Reward Card 5: Advanced Grade Boost (10 Points) -->
+          <div class="reward-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-red-400 hover:border-red-600" data-reward-id="5" data-reward-cost="2000" data-reward-title="+10 Grade Points" style="opacity: 0.7; cursor: not-allowed;">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-red-100">
+                <i class="ri-star-line text-3xl text-red-600"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl font-bold text-yellow-600 flex items-center gap-1">
+                  <i class="ri-coin-line"></i>2000
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Grade Boost</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">+10 Grade Points</h3>
+            <p class="text-gray-600 mb-4">Major grade boost for your final project</p>
+            <button class="w-full py-3 rounded-lg font-medium transition-colors cursor-not-allowed bg-gray-200 text-gray-600" disabled>
+              <i class="ri-lock-line mr-2"></i>Locked
+            </button>
+          </div>
+
+          <!-- Reward Card 6: Study Group Access -->
+          <div class="reward-card bg-white rounded-xl shadow-lg p-6 transition-all hover:shadow-xl border-l-4 border-pink-400 hover:border-pink-600" data-reward-id="6" data-reward-cost="400" data-reward-title="Study Group Access">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-16 h-16 flex items-center justify-center rounded-lg bg-pink-100">
+                <i class="ri-team-line text-3xl text-pink-600"></i>
+              </div>
+              <div class="text-right">
+                <div class="text-3xl font-bold text-yellow-600 flex items-center gap-1">
+                  <i class="ri-coin-line"></i>400
+                </div>
+                <p class="text-xs text-gray-500 mt-1">Social</p>
+              </div>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Study Group Access</h3>
+            <p class="text-gray-600 mb-4">Join exclusive study sessions with top students</p>
+            <button class="redeem-reward-btn w-full py-3 rounded-lg font-medium transition-colors cursor-pointer bg-blue-600 hover:bg-blue-700 text-white">
+              <i class="ri-shopping-cart-line mr-2"></i>Redeem Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Redeemed Rewards Section -->
+        <div class="mt-16 bg-white rounded-xl shadow-lg p-8">
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">📦 Your Redeemed Rewards</h3>
+          <div id="redeemed-list" class="space-y-3">
+            <p class="text-gray-500 text-center py-8">No rewards redeemed yet. Start earning points!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Points drawer / overlay -->
+    <div id="overlay" class="hidden fixed inset-0 bg-black/40 z-40"></div>
+    <aside id="points-drawer" class="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform z-50">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">My Points</h3>
+          <button id="close-drawer" class="text-gray-500 hover:text-gray-800">Close</button>
+        </div>
+        <div id="points-content">
+          <p class="text-2xl font-bold text-yellow-600"><i class="ri-coin-line mr-1"></i><span id="points-total">0</span></p>
+          <div id="points-list" class="mt-4 space-y-3 text-sm text-gray-700"></div>
+        </div>
+      </div>
+    </aside>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+APP.JS
+
+
+
+
+// app.js - interactive behavior for prototype
+
+(() => {
+  // Points are persisted to localStorage so they survive reloads.
+  const POINTS_KEY = 'ql_points';
+  // History persists in localStorage (change HISTORY_KEY if you want that reset too).
+  const HISTORY_KEY = 'ql_history';
+  // Redeemed rewards persisted in localStorage
+  const REDEEMED_REWARDS_KEY = 'ql_redeemed_rewards';
+
+  // initialize runtimePoints from localStorage
+  let runtimePoints = parseInt(localStorage.getItem(POINTS_KEY) || '0', 10) || 0;
+  // migrate redeemed rewards from sessionStorage (old behaviour) to localStorage
+  try {
+    const ses = sessionStorage.getItem(REDEEMED_REWARDS_KEY);
+    const loc = localStorage.getItem(REDEEMED_REWARDS_KEY);
+    if (ses && !loc) {
+      localStorage.setItem(REDEEMED_REWARDS_KEY, ses);
+    }
+  } catch (e) {}
+
+  function $(sel, root=document) { return root.querySelector(sel); }
+  function $$(sel, root=document) { return Array.from(root.querySelectorAll(sel)); }
+
+  function getPoints() {
+    return parseInt(String(runtimePoints || 0), 10);
+  }
+  function setPoints(n) {
+    runtimePoints = Number(n) || 0;
+    // persist
+    try { localStorage.setItem(POINTS_KEY, String(runtimePoints)); } catch (e) {}
+    updatePointsUI();
+  }
+  function pushHistory(item) {
+    const hist = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+    hist.unshift(item);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(hist.slice(0,50)));
+    renderHistory();
+  }
+
+  function updatePointsUI() {
+    const total = getPoints();
+    const badge = $('#points-badge');
+    const totalEl = $('#points-total');
+    if (badge) badge.textContent = total || '';
+    if (totalEl) totalEl.textContent = total;
+  }
+
+  function renderHistory() {
+    const list = $('#points-list');
+    if (!list) return;
+    const hist = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+    list.innerHTML = '';
+    if (hist.length === 0) {
+      list.innerHTML = '<p class="text-sm text-gray-500">No completed quests yet.</p>';
+      return;
+    }
+    hist.forEach(h => {
+      const el = document.createElement('div');
+      el.className = 'flex justify-between items-center';
+      el.innerHTML = `<div class="text-sm">${h.title}</div><div class="text-sm font-medium text-yellow-600">+${h.points}</div>`;
+      list.appendChild(el);
+    });
+  }
+
+  function openDrawer() {
+    const overlay = $('#overlay');
+    const drawer = $('#points-drawer');
+    if (overlay) overlay.classList.remove('hidden');
+    if (drawer) {
+      drawer.classList.remove('translate-x-full');
+      drawer.classList.add('translate-x-0');
+    }
+  }
+  function closeDrawer() {
+    const overlay = $('#overlay');
+    const drawer = $('#points-drawer');
+    if (overlay) overlay.classList.add('hidden');
+    if (drawer) {
+      drawer.classList.remove('translate-x-0');
+      drawer.classList.add('translate-x-full');
+    }
+  }
+
+  function updateRewardsUI() {
+    const balance = $('#reward-points-balance');
+    if (balance) balance.textContent = getPoints();
+  }
+
+  function redeemReward(rewardId, rewardCost, rewardTitle) {
+    const currentPoints = getPoints();
+    if (currentPoints < rewardCost) {
+      alert('Not enough points! You need ' + rewardCost + ' points but only have ' + currentPoints);
+      return false;
+    }
+
+    // Deduct points
+    setPoints(currentPoints - rewardCost);
+    updateRewardsUI();
+
+    // Add to redeemed list (persist across reloads)
+    const redeemedList = JSON.parse(localStorage.getItem(REDEEMED_REWARDS_KEY) || '[]');
+    redeemedList.unshift({
+      id: rewardId,
+      title: rewardTitle,
+      cost: rewardCost,
+      redeemedAt: Date.now()
+    });
+    try { localStorage.setItem(REDEEMED_REWARDS_KEY, JSON.stringify(redeemedList.slice(0, 100))); } catch (e) {}
+    renderRedeemedRewards();
+
+    alert('Reward redeemed successfully! Check your rewards list.');
+    return true;
+  }
+
+  function renderRedeemedRewards() {
+    const list = $('#redeemed-list');
+    if (!list) return;
+    const redeemed = JSON.parse(localStorage.getItem(REDEEMED_REWARDS_KEY) || '[]');
+    list.innerHTML = '';
+    if (redeemed.length === 0) {
+      list.innerHTML = '<p class="text-gray-500 text-center py-8">No rewards redeemed yet. Start earning points!</p>';
+      return;
+    }
+    redeemed.forEach((r, idx) => {
+      const date = new Date(r.redeemedAt);
+      const el = document.createElement('div');
+      el.className = 'flex justify-between items-center p-4 bg-green-50 rounded-lg border-l-4 border-green-500';
+      el.innerHTML = `
+        <div>
+          <p class="font-semibold text-gray-800">${r.title}</p>
+          <p class="text-xs text-gray-500 mt-1">${date.toLocaleDateString()} ${date.toLocaleTimeString()}</p>
+        </div>
+        <div class="text-right">
+          <p class="font-medium text-green-600 flex items-center gap-1"><i class="ri-check-circle-line"></i> Redeemed</p>
+          <p class="text-xs text-gray-500 mt-1">-${r.cost} pts</p>
+        </div>
+      `;
+      list.appendChild(el);
+    });
+  }
+
+  // Reset stored points and redeemed rewards (keeps history intact)
+  function resetData() {
+    if (!confirm('Reset points and redeemed rewards? This cannot be undone.')) return;
+    try {
+      localStorage.setItem(POINTS_KEY, '0');
+      localStorage.removeItem(REDEEMED_REWARDS_KEY);
+    } catch (e) {}
+    // update runtime and UI
+    setPoints(0);
+    renderRedeemedRewards();
+    updateRewardsUI();
+    alert('Points and redeemed rewards have been reset.');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updatePointsUI();
+    updateRewardsUI();
+    renderHistory();
+    renderRedeemedRewards();
+
+    // Hero buttons
+    const heroStart = $('#hero-start-btn');
+    if (heroStart) {
+      heroStart.addEventListener('click', (e) => {
+        const quests = $('#quests');
+        if (quests) quests.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    }
+    const heroProgress = $('#hero-progress-btn');
+    if (heroProgress) heroProgress.addEventListener('click', openDrawer);
+
+    // Nav buttons for switching views
+    const navQuestBoard = $('#nav-questboard-btn');
+    const navRewards = $('#nav-rewards-btn');
+    const navPoints = $('#nav-mypoints-btn');
+    const questsSection = $('#quests');
+    const rewardsSection = $('#rewards-section');
+
+    if (navQuestBoard) {
+      navQuestBoard.addEventListener('click', () => {
+        if (questsSection) questsSection.classList.remove('hidden');
+        if (rewardsSection) rewardsSection.classList.add('hidden');
+        navQuestBoard.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        navQuestBoard.classList.remove('text-gray-600');
+        if (navRewards) {
+          navRewards.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+          navRewards.classList.add('text-gray-600');
+        }
+      });
+    }
+
+    if (navRewards) {
+      navRewards.addEventListener('click', () => {
+        if (questsSection) questsSection.classList.add('hidden');
+        if (rewardsSection) rewardsSection.classList.remove('hidden');
+        navRewards.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+        navRewards.classList.remove('text-gray-600');
+        if (navQuestBoard) {
+          navQuestBoard.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+          navQuestBoard.classList.add('text-gray-600');
+        }
+        updateRewardsUI();
+      });
+    }
+
+    // Points button opens drawer
+    if (navPoints) navPoints.addEventListener('click', openDrawer);
+
+    // Drawer close
+    const closeBtn = $('#close-drawer');
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    const overlay = $('#overlay');
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    // Redeem reward buttons
+    $$('.redeem-reward-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = btn.closest('.reward-card');
+        if (!card) return;
+        const rewardId = card.getAttribute('data-reward-id');
+        const rewardCost = parseInt(card.getAttribute('data-reward-cost') || '0', 10);
+        const rewardTitle = card.getAttribute('data-reward-title') || 'Unknown Reward';
+        redeemReward(rewardId, rewardCost, rewardTitle);
+      });
+    });
+
+    // Filters
+    $$('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const filter = btn.getAttribute('data-filter');
+        // toggle active styles
+        $$('.filter-btn').forEach(b => b.classList.remove('bg-blue-600','text-white'));
+        btn.classList.add('bg-blue-600','text-white');
+        // show/hide
+        $$('.quest-card').forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'all' || filter === cat) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Start Quest buttons
+    $$('.start-quest-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = btn.closest('.quest-card');
+        if (!card) return;
+        if (btn.disabled) return;
+        // parse attributes
+        let progress = parseInt(card.getAttribute('data-progress') || '0', 10);
+        const total = parseInt(card.getAttribute('data-total') || '1', 10);
+        const reward = parseInt(card.getAttribute('data-reward') || '0', 10);
+        const title = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : 'Quest';
+
+        // increment progress
+        progress = Math.min(total, progress + 1);
+        card.setAttribute('data-progress', String(progress));
+
+        // update UI
+        const progressText = card.querySelector('.progress-text');
+        if (progressText) progressText.textContent = `${progress}/${total}`;
+        const bar = card.querySelector('.progress-bar');
+        if (bar) bar.style.width = (Math.round((progress/total)*10000)/100) + '%';
+
+        // if completed
+        if (progress >= total) {
+          btn.disabled = true;
+          btn.classList.remove('bg-blue-600','hover:bg-blue-700');
+          btn.classList.add('bg-green-100','text-green-800','cursor-not-allowed');
+          btn.innerHTML = '<i class="ri-check-line mr-2"></i>Completed';
+
+          // award points
+          if (reward > 0) {
+            const prev = getPoints();
+            setPoints(prev + reward);
+            pushHistory({ title, points: reward, at: Date.now() });
+          }
+        }
+      });
+    });
+
+    // Initialize filter default (All)
+    const firstFilter = document.querySelector('.filter-btn[data-filter="all"]');
+    if (firstFilter) firstFilter.click();
+
+    // Enhance existing progress displays by converting static progress into data attributes if not present
+    $$('.quest-card').forEach(card => {
+      const progressText = card.querySelector('.progress-text');
+      if (!progressText) {
+        // try to find numeric progress like "7/10" inside the card
+        const match = card.innerText.match(/(\d+)\s*\/\s*(\d+)/);
+        if (match) {
+          card.setAttribute('data-progress', match[1]);
+          card.setAttribute('data-total', match[2]);
+        }
+      }
+    });
+
+  });
+})();

@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("straykids\ wallpaper.jpg") no-repeat center/cover;
+}
+
+/* Center container */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Glass morphism box */
+.glass-box {
+    width: 350px;
+    padding: 40px;
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(11px);
+
+    border: 3px solid rgba(70, 66, 66, 0.822);
+    box-shadow: 0 8px 32px rgba(82, 74, 74, 0.25);
+
+    text-align: center;
+    color: #351b1b;
+}
+
+.glass-box h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Input fields */
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #292323;
+
+    background: transparent;
+    color: #3f2323;
+}
+
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: #2e2727;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -12px;
+    font-size: 12px;
+    color: #271b1b;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: rgba(87, 60, 60, 0.2);
+    color: #5e2929;
+
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: rgba(78, 6, 6, 0.35);
+}
+
+
+/* Icon style inside input boxes */
+.input-group {
+    position: relative;
+}
+
+.input-group .input-icon {
+    position: absolute;
+    left: 5px;         /* Move icon right */
+    top: 18px;         /* Move icon down */
+    font-size: 18px;
+    color: #3f2323;
+    pointer-events: none;
+}
+
+.input-group input {
+    padding-left: 35px;   /* Extra space so text doesn't hit icon */
+}
+
+/* Move label slightly right so it doesn't overlap the icon */
+.input-group label {
+    left: 35px;
+}
+
+/* When input is focused or has text, move label up */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    left: 5px;       /* Align label to left when floating */
+    top: -12px;
+    font-size: 12px;
+    color: #271b1b;
+}
+
+/* Left-side key icon */
+.input-group .input-icon {
+    position: absolute;
+    left: 5px;
+    top: 16px;
+    font-size: 18px;
+    color: #3f2323;
+    pointer-events: none;
+}
+
+/* Move input text to the right */
+.input-group input {
+    padding-left: 35px;
+}
+
+/* Label (default position) */
+.input-group label {
+    position: absolute;
+    left: 35px; /* avoids overlapping the left icon */
+    top: 12px;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+/* Floating label */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    left: 5px;
+    top: -10px;
+    font-size: 12px;
+}
+
+/* Right-side eye icon */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #3f2323;
+}
+
